@@ -190,41 +190,16 @@ class DataManager:
         :param path: string path to the output file
         :return: a dictionary with different processed and formatted arrays of data
         """
-        file = open(path, "r")
-        lines = file.readlines()
-
-        filtered_lines = list(filter(lambda k: '[==============================]' in k, lines))
-        filtered_lines = list(map(lambda k: k.split(" "), filtered_lines))
-
-        val_loss = []
-        val_acc = []
-        loss = []
-        acc = []
-        labels_epoch = []
-
-        epoch = 1
-        for line in filtered_lines:
-            if len(line) == 17:
-                loss.append(float(line[7]))
-                acc.append(float(line[10]))
-                val_loss.append(float(line[13]))
-                val_acc.append(float(line[16].strip("\n")))
-                labels_epoch.append(epoch)
-                epoch = epoch + 1
-
-        labels_epoch = list(reversed(labels_epoch))
-        val_loss.reverse()
-        val_acc.reverse()
-        loss.reverse()
-        acc.reverse()
-
+        from training_log import read_training_log
+        from pathlib import Path
+        rows = read_training_log(path)
         return {
-            "val_loss": val_loss,
-            "val_acc": val_acc,
-            "loss": loss,
-            "acc": acc,
-            "labels_epoch": labels_epoch,
-            "model": path.split("/")[-2]
+            "val_loss": [row["valLoss"] for row in rows],
+            "val_acc": [row["valAccuracy"] for row in rows],
+            "loss": [row["loss"] for row in rows],
+            "acc": [row["accuracy"] for row in rows],
+            "labels_epoch": [row["epoch"] for row in rows],
+            "model": Path(path).parent.name,
         }
 
     def get_images_from_data(self, number_of_images=5, data_type="Training"):

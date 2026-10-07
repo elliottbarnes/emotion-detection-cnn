@@ -32,7 +32,7 @@ BATCH_SIZE = 32
 EPOCHS = 50
 
 # boolean variable to decide if demo should be run
-RUN_DEMO = True
+RUN_DEMO = False
 
 # boolean variable to decide if model should be trained
 TRAIN_MODEL = True
