@@ -1,4 +1,4 @@
-"/Users/hammad/Documents/School/Winter 2021/COMP_4301/CS4301/venv/bin/python" "/Users/hammad/Documents/School/Winter 2021/COMP_4301/CS4301/Term_Project/Code/new_model.py"
+# Example: python3 CNN.py
 Reading data...
 Data Read Complete!
 Creating a Sequential model
