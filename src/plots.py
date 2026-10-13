@@ -170,7 +170,7 @@ class ModelPlots:
         :param path: path to the model file
         """
 
-        classifier = load_model(path)
+        classifier = load_model(path, compile=False)
         images = self.data_manager.get_images_from_data(number_of_images=5, data_type="PublicTest")
         labels = []
 

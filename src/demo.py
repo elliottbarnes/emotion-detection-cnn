@@ -20,7 +20,7 @@ class Demo:
         face_cascade = cv2.CascadeClassifier(self.haar_classifier_path)
 
         # load our model
-        classifier = load_model(self.model_path)
+        classifier = load_model(self.model_path, compile=False)
 
         # create a video capture object
         vid = cv2.VideoCapture(0)
