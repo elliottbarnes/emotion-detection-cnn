@@ -3,7 +3,7 @@ import pandas as pd
 import random
 
 from tensorflow.keras.utils import to_categorical
-from keras_preprocessing.image import ImageDataGenerator
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 
 class DataManager:
